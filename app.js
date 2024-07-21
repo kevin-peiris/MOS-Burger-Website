@@ -11,37 +11,6 @@ class Customer{
         this.email=email;
     }
 
-    setCustomerId(customerId){
-        this.customerId=customerId;
-    }
-
-    getCustomerId(){
-        return this.name;
-    }
-    
-    setName(name){
-        this.name=name;
-    }
-
-    getName(){
-        return this.name;
-    }
-
-    setPhoneNum(phoneNum){
-        this.phoneNum=phoneNum;
-    }
-
-    getPhoneNum(){
-        return this.phoneNum;
-    }
-
-    setEmail(email){
-        this.email=email;
-    }
-
-    getEmail(){
-        return this.email;
-    }
 }
 
 let customers=[];
@@ -61,10 +30,12 @@ function addCustomer() {
 
     console.log(customers);
 
+    // Clear input fields after adding a customer
     document.getElementById("name").value = '';
     document.getElementById("phoneNum").value = '';
     document.getElementById("email").value = '';
 
+    // Generate new customer ID
     generateId();
 }
 
@@ -84,6 +55,38 @@ function loadCustomers() {
 }
 
 document.addEventListener("DOMContentLoaded", loadCustomers);
+
+function searchCustomer(){
+    const value=document.getElementById("value").value;
+    
+    document.getElementById("viewId").value = "";
+    document.getElementById("viewName").value = "";
+    document.getElementById("viewPhoneNum").value = "";
+    document.getElementById("viewEmail").value = "";
+
+    for (let index = 0; index < customers.length; index++) {
+        let customer=customers[index];
+        if (customer.name===value) {
+            document.getElementById("viewId").value = customer.customerId;
+            document.getElementById("viewName").value = customer.name;
+            document.getElementById("viewPhoneNum").value = customer.phoneNum;
+            document.getElementById("viewEmail").value = customer.email;
+
+            console.log("Found");
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 function clearCustomerData() {
     localStorage.removeItem('customers');
