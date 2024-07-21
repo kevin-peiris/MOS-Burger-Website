@@ -8,7 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="generateId()">
     <div class="container">
         <div class="row">
           
@@ -56,16 +56,16 @@
               </div>
 
               <div class="col-4 mt-5">
-            
-                <input class="form-control mt-1" type="text" placeholder="" readonly>  
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
+                
+                <input class="form-control mt-3" type="text" id="customerId" readonly>
+                <input class="form-control mt-4" type="text" placeholder="Enter Name" id="name">
+                <input class="form-control mt-4" type="text" placeholder="Enter Phone Number" id="phoneNum">
+                <input class="form-control mt-4" type="text" placeholder="Enter Email" id="email">
 
                 <div class="container">
                   <div class="d-flex justify-content-end">
                       <div class="w-25 p-1">
-                          <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Add</a>
+                          <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="addCustomer()">Add</a>
                       </div>
                       <div class="w-25 p-1">
                           <a href="CustomerMain.html" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Back</a>
@@ -88,5 +88,6 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="app.js"></script>
       </body>
 </html>

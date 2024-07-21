@@ -46,8 +46,47 @@ class Customer{
 
 let customers=[];
 let custCount=0;
-generateId(){
+
+function addCustomer() {
+    const customerId = document.getElementById("customerId").value;
+    const name = document.getElementById("name").value;
+    const phoneNum = document.getElementById("phoneNum").value;
+    const email = document.getElementById("email").value;
+
+    const customer = new Customer(customerId, name, phoneNum, email);
+    customers.push(customer);
     custCount++;
-    setCustomerId(C00+custCount);
+
+    localStorage.setItem('customers', JSON.stringify(customers));
+
+    console.log(customers);
+
+    document.getElementById("name").value = '';
+    document.getElementById("phoneNum").value = '';
+    document.getElementById("email").value = '';
+
+    generateId();
+}
+
+function generateId() {
+    const id = "C0" + (custCount + 1).toString().padStart(3, '0');
+    console.log(id);
+    document.getElementById("customerId").value = id;
+}
+
+function loadCustomers() {
+    const storedCustomers = localStorage.getItem('customers');
+    if (storedCustomers) {
+        customers = JSON.parse(storedCustomers);
+        custCount = customers.length;
+    }
+    generateId();
+}
+
+document.addEventListener("DOMContentLoaded", loadCustomers);
+
+function clearCustomerData() {
+    localStorage.removeItem('customers');
+    console.log('Customer data cleared');
     
 }
