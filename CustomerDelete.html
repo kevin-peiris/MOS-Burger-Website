@@ -44,12 +44,12 @@
 
             <div class="container">
                 <div class="d-flex justify-content">
-                    <div class="w-25 p-1">
-                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Search</a>
-                    </div>
-                    <div class="w-100 p">
-                        <input class="form-control mt-4" type="text" placeholder="">
-                    </div>
+                  <div class="w-25 p-1">
+                    <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="searchCustomer()">Search</a>
+                  </div>
+                  <div class="w-100 p">
+                      <input class="form-control mt-4" type="text" placeholder="" id="value">
+                  </div>
                 </div>
             </div>
     
@@ -71,15 +71,15 @@
 
               <div class="col-4 mt-5">
             
-                <input class="form-control mt-1" type="text" placeholder="" readonly>  
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
+                <input class="form-control mt-1" type="text" placeholder="" readonly id="viewId">  
+                <input class="form-control mt-4" type="text" placeholder="" id="viewName">
+                <input class="form-control mt-4" type="text" placeholder="" id="viewPhoneNum">
+                <input class="form-control mt-4" type="text" placeholder="" id="viewEmail">
 
                 <div class="container">
                   <div class="d-flex justify-content-end">
                       <div class="w-25 p-1">
-                          <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Delete</a>
+                          <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="deleteCustomer()">Delete</a>
                       </div>
                       <div class="w-25 p-1">
                           <a href="CustomerMain.html" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Back</a>
@@ -102,5 +102,6 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="app.js"></script>
       </body>
 </html>

@@ -56,6 +56,8 @@ function loadCustomers() {
 
 document.addEventListener("DOMContentLoaded", loadCustomers);
 
+let foundElement=-1;
+
 function searchCustomer(){
     const value=document.getElementById("value").value;
     
@@ -63,6 +65,8 @@ function searchCustomer(){
     document.getElementById("viewName").value = "";
     document.getElementById("viewPhoneNum").value = "";
     document.getElementById("viewEmail").value = "";
+
+    
 
     for (let index = 0; index < customers.length; index++) {
         let customer=customers[index];
@@ -73,8 +77,17 @@ function searchCustomer(){
             document.getElementById("viewEmail").value = customer.email;
 
             console.log("Found");
+            foundElement=index;
+            console.log(foundElement);
         }
         
+    }
+}
+
+function deleteCustomer(){
+    if (foundElement!=-1) {
+        customers.splice(foundElement, 1);
+        console.log(foundElement);
     }
 }
 
