@@ -22,21 +22,33 @@ function addCustomer() {
     const phoneNum = document.getElementById("phoneNum").value;
     const email = document.getElementById("email").value;
 
-    const customer = new Customer(customerId, name, phoneNum, email);
-    customers.push(customer);
-    custCount++;
+    if (name.length==0 || phoneNum.length==0 || email.length==0) {
+        alert("TextField empty!!!");
+    }else if (phoneNum.length!=10) {
 
-    localStorage.setItem('customers', JSON.stringify(customers));
+        document.getElementById("phoneNum").value = "";
+        alert("Inavlid Phone Number");
 
-    console.log(customers);
+    }else{
 
-    // Clear input fields after adding a customer
-    document.getElementById("name").value = '';
-    document.getElementById("phoneNum").value = '';
-    document.getElementById("email").value = '';
+        const customer = new Customer(customerId, name, phoneNum, email);
+        customers.push(customer);
+        custCount++;
 
-    // Generate new customer ID
-    generateId();
+        localStorage.setItem('customers', JSON.stringify(customers));
+
+        console.log(customers);
+
+        
+        document.getElementById("name").value = "";
+        document.getElementById("phoneNum").value = "";
+        document.getElementById("email").value = "";
+
+        alert("Customer added successfully");
+        
+        generateId();
+
+    }
 }
 
 function generateId() {
@@ -66,8 +78,6 @@ function searchCustomer(){
     document.getElementById("viewPhoneNum").value = "";
     document.getElementById("viewEmail").value = "";
 
-    
-
     for (let index = 0; index < customers.length; index++) {
         let customer=customers[index];
         if (customer.name===value) {
@@ -79,15 +89,45 @@ function searchCustomer(){
             console.log("Found");
             foundElement=index;
             console.log(foundElement);
+        }else{
+            document.getElementById("viewId").value = "Customer Not Found";
+            document.getElementById("viewName").value = "Customer Not Found";
+            document.getElementById("viewPhoneNum").value = "Customer Not Found";
+            document.getElementById("viewEmail").value = "Customer Not Found";
         }
         
     }
 }
 
-function deleteCustomer(){
-    if (foundElement!=-1) {
+function deleteCustomer() { 
+    if (foundElement !== -1) {
         customers.splice(foundElement, 1);
-        console.log(foundElement);
+        localStorage.setItem('customers', JSON.stringify(customers));
+        
+        foundElement = -1;
+        document.getElementById("viewId").value = "";
+        document.getElementById("viewName").value = "";
+        document.getElementById("viewPhoneNum").value = "";
+        document.getElementById("viewEmail").value = "";
+    }
+    
+}
+
+function updateCustomer() { 
+    if (foundElement !== -1) {
+        const name = document.getElementById("viewName").value;
+        const phoneNum = document.getElementById("viewPhoneNum").value;
+        const email = document.getElementById("viewEmail").value;
+
+        customers[foundElement].name = name;
+        customers[foundElement].phoneNum = phoneNum;
+        customers[foundElement].email = email;
+
+        localStorage.setItem('customers', JSON.stringify(customers));
+        alert("Customer updated successfully.");
+        foundElement = -1;
+    } else {
+        alert("No customer selected to update.");
     }
 }
 
