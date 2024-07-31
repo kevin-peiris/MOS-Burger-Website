@@ -80,7 +80,7 @@ function searchCustomer(){
 
     for (let index = 0; index < customers.length; index++) {
         let customer=customers[index];
-        if (customer.name===value) {
+        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
             document.getElementById("viewId").value = customer.customerId;
             document.getElementById("viewName").value = customer.name;
             document.getElementById("viewPhoneNum").value = customer.phoneNum;
@@ -109,6 +109,9 @@ function deleteCustomer() {
         document.getElementById("viewName").value = "";
         document.getElementById("viewPhoneNum").value = "";
         document.getElementById("viewEmail").value = "";
+        alert("Customer deleted successfully.");
+    } else {
+        alert("No customer selected to delete.");
     }
     
 }
@@ -125,13 +128,34 @@ function updateCustomer() {
 
         localStorage.setItem('customers', JSON.stringify(customers));
         alert("Customer updated successfully.");
+        document.getElementById("viewId").value = "";
+        document.getElementById("viewName").value = "";
+        document.getElementById("viewPhoneNum").value = "";
+        document.getElementById("viewEmail").value = "";
         foundElement = -1;
     } else {
         alert("No customer selected to update.");
     }
 }
 
+function getHistory() {
+    const value=document.getElementById("value").value;
 
+    document.getElementById("viewId").value = "";
+
+    for (let index = 0; index < customers.length; index++) {
+        let customer=customers[index];
+        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
+            document.getElementById("viewId").value = customer.customerId;
+            
+            console.log("Found");
+            console.log(foundElement);
+        }else{
+            document.getElementById("viewId").value = "Customer Not Found";
+        }
+        
+    }
+}
 
 
 

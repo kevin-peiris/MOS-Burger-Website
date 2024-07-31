@@ -32,9 +32,9 @@
     <hr>
 
     <div class="container w-auto">
-            <center>
-                <p id="titleText">Customer History</p>
-            </center>
+        <center>
+            <p id="titleText">Customer History</p>
+        </center>
     </div>
 
     <hr>
@@ -45,10 +45,10 @@
             <div class="container">
                 <div class="d-flex justify-content">
                     <div class="w-25 p-1">
-                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Search</a>
+                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="getHistory()">Search</a>
                     </div>
                     <div class="w-100 p">
-                        <input class="form-control mt-4" type="text" placeholder="">
+                        <input class="form-control mt-4" type="text" placeholder="" id="value">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         <p id="subtitle">Customer Id</p>  
                     </div>
                     <div class="w-25 p-1">
-                        <input class="form-control mt-1" type="text" placeholder="" readonly>
+                        <input class="form-control mt-1" type="text" placeholder="" readonly id="viewId">
                     </div>
                 </div>
             </div>
@@ -98,15 +98,18 @@
               
 
             </div>
-
-            
-
+            <div class="container">
+                <div class="d-flex justify-content-end">
+                    <div class="w-50 p-1">
+                        <a href="CustomerMain.html" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Back</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
-    
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
