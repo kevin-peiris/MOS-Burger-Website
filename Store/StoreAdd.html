@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Item</title>
+    <title>Add Item</title>
     
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        
         <div class="row">
           
           <div class="col-4">
-            <center><img src="img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+            <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
           </div>
           
           <div class="col-4">
-            <center><img src="img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
+            <center><img src="../img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
             
           </div>
           
           <div class="col-4">
-            <center><img src="img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+            <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
           </div>
         </div>
     </div>
@@ -33,7 +32,7 @@
 
     <div class="container w-auto">
             <center>
-                <p id="titleText">Update Item</p>
+                <p id="titleText">Add Item</p>
             </center>
     </div>
 
@@ -41,23 +40,10 @@
 
     <div class="row-cols-1" id="partition">
         <div class="container">
-
-            <div class="container">
-                <div class="d-flex justify-content">
-                    <div class="w-25 p-1">
-                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Search</a>
-                    </div>
-                    <div class="w-100 p">
-                        <input class="form-control mt-4" type="text" placeholder="">
-                    </div>
-                </div>
-            </div>
-    
-
             <div class="row">
       
               <div class="col-4">
-                <img src="img/chef.png" class="img-fluid h-75" alt="chef">
+                <img src="../img/chef.png" class="img-fluid h-75" alt="chef">
               </div>
       
               <div class="col-3 mt-5">
@@ -66,22 +52,22 @@
                 <p id="subtitle">Item Name</p>  
                 <p id="subtitle">Expire Date</p>  
                 <p id="subtitle">Quantity</p> 
-                <p id="subtitle">Suplier</p>   
+                <p id="subtitle">Suplier</p>  
                 
               </div>
 
               <div class="col-4 mt-5">
             
-                <input class="form-control mt-1" type="text" placeholder="" readonly>  
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
-                <input class="form-control mt-4" type="text" placeholder="">
+                <input class="form-control mt-1" type="text" placeholder="" id="itemId" readonly>  
+                <input class="form-control mt-4" type="text" placeholder="" id="name">
+                <input class="form-control mt-4" type="date" placeholder="" id="date">
+                <input class="form-control mt-4" type="number" placeholder="" id="qty">
+                <input class="form-control mt-4" type="text" placeholder="" id="suplier">
 
                 <div class="container">
                   <div class="d-flex justify-content-end">
                       <div class="w-25 p-1">
-                          <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Update</a>
+                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="addItem()">Add</a>
                       </div>
                       <div class="w-25 p-1">
                           <a href="StoreMain.html" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Back</a>
@@ -104,5 +90,6 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="app.js"></script>
       </body>
 </html>

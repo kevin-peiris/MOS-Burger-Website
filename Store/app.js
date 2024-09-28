@@ -1,108 +1,111 @@
-class Customer{
-    customerId;
+class Item {
+    itemId;
     name;
-    phoneNum;
-    email;
+    date;
+    qty;
+    suplier;
 
-    constructor(customerId,name,phoneNum,email){
-        this.customerId=customerId;
-        this.name=name;
-        this.phoneNum=phoneNum;
-        this.email=email;
+    constructor(itemId, name, date, qty, suplier) {
+        this.itemId = itemId;
+        this.name = name;
+        this.date = date;
+        this.qty = qty;
+        this.suplier = suplier;
     }
 
 }
 
-let customers=[];
-let custCount=0;
+let items = [];
+let itemCount = 0;
 
-function addCustomer() {
-    const customerId = document.getElementById("customerId").value;
+function addItem() {
+    const itemId = document.getElementById("itemId").value;
     const name = document.getElementById("name").value;
-    const phoneNum = document.getElementById("phoneNum").value;
-    const email = document.getElementById("email").value;
+    const date = document.getElementById("date").value;
+    const qty = parseInt(document.getElementById("qty").value, 10);
+    const suplier = document.getElementById("suplier").value;
 
-    if (name.length==0 || phoneNum.length==0 || email.length==0) {
-        alert("TextField empty!!!");
-    }else if (phoneNum.length!=10) {
+   
+    if (!name || !date || isNaN(qty) || !suplier) {
+        alert("Some fields are empty or invalid!");
+    } else if (qty <= 0) {
+        document.getElementById("qty").value = "";
+        alert("Invalid Quantity");
+    } else {
+        const item = new Item(itemId, name, date, qty, suplier);
+        items.push(item);
+        itemCount++;
 
-        document.getElementById("phoneNum").value = "";
-        alert("Inavlid Phone Number");
+        localStorage.setItem('items', JSON.stringify(items));
 
-    }else{
+        console.log(items);
 
-        const customer = new Customer(customerId, name, phoneNum, email);
-        customers.push(customer);
-        custCount++;
-
-        localStorage.setItem('customers', JSON.stringify(customers));
-
-        console.log(customers);
-
-        
+       
         document.getElementById("name").value = "";
-        document.getElementById("phoneNum").value = "";
-        document.getElementById("email").value = "";
+        document.getElementById("date").value = "";
+        document.getElementById("qty").value = "";
+        document.getElementById("suplier").value = "";
 
-        alert("Customer added successfully");
+        alert("Item added successfully");
+
         
         generateId();
-
     }
 }
 
+
 function generateId() {
-    const id = "C0" + (custCount + 1).toString().padStart(2, '0');
+    const id = "I0" + (itemCount + 1).toString().padStart(2, '0');
     console.log(id);
-    document.getElementById("customerId").value = id;
+    document.getElementById("itemId").value = id;
 }
 
-function loadCustomers() {
-    const storedCustomers = localStorage.getItem('customers');
-    if (storedCustomers) {
-        customers = JSON.parse(storedCustomers);
-        custCount = customers.length;
+function loadItems() {
+    const storedItems = localStorage.getItem('items');
+    if (storedItems) {
+        items = JSON.parse(storedItems);
+        itemCount = items.length;
     }
     generateId();
 }
 
-document.addEventListener("DOMContentLoaded", loadCustomers);
+document.addEventListener("DOMContentLoaded", loadItems);
 
-let foundElement=-1;
+let foundElement = -1;
 
-function searchCustomer(data){
-    const value=data;
-    
+function searchCustomer(data) {
+    const value = data;
+
     document.getElementById("viewId").value = "";
     document.getElementById("viewName").value = "";
     document.getElementById("viewPhoneNum").value = "";
     document.getElementById("viewEmail").value = "";
 
     for (let index = 0; index < customers.length; index++) {
-        let customer=customers[index];
-        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
+        let customer = customers[index];
+        if (customer.name === value | customer.customerId == value | customer.phoneNum == value | customer.email == value) {
             document.getElementById("viewId").value = customer.customerId;
             document.getElementById("viewName").value = customer.name;
             document.getElementById("viewPhoneNum").value = customer.phoneNum;
             document.getElementById("viewEmail").value = customer.email;
 
-            document.getElementById('search-input').value="";
+            document.getElementById('search-input').value = "";
 
             console.log("Found");
-            foundElement=index;
+            foundElement = index;
             console.log(foundElement);
             alert('Customer Found!');
-        }else{
+        } else {
             document.getElementById("viewId").value = "";
             document.getElementById("viewName").value = "";
             document.getElementById("viewPhoneNum").value = "";
             document.getElementById("viewEmail").value = "";
 
-            document.getElementById('search-input').value="";
+            document.getElementById('search-input').value = "";
 
             alert('Customer Not Found!');
         }
-        
+
     }
 }
 
@@ -122,11 +125,11 @@ document.getElementById('search-input').addEventListener('keypress', function (e
     }
 });
 
-function deleteCustomer() { 
+function deleteCustomer() {
     if (foundElement !== -1) {
         customers.splice(foundElement, 1);
         localStorage.setItem('customers', JSON.stringify(customers));
-        
+
         foundElement = -1;
         document.getElementById("viewId").value = "";
         document.getElementById("viewName").value = "";
@@ -136,10 +139,10 @@ function deleteCustomer() {
     } else {
         alert("No customer selected to delete.");
     }
-    
+
 }
 
-function updateCustomer() { 
+function updateCustomer() {
     if (foundElement !== -1) {
         const name = document.getElementById("viewName").value;
         const phoneNum = document.getElementById("viewPhoneNum").value;
@@ -162,21 +165,21 @@ function updateCustomer() {
 }
 
 function getHistory() {
-    const value=document.getElementById("value").value;
+    const value = document.getElementById("value").value;
 
     document.getElementById("viewId").value = "";
 
     for (let index = 0; index < customers.length; index++) {
-        let customer=customers[index];
-        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
+        let customer = customers[index];
+        if (customer.name === value | customer.customerId == value | customer.phoneNum == value | customer.email == value) {
             document.getElementById("viewId").value = customer.customerId;
-            
+
             console.log("Found");
             console.log(foundElement);
-        }else{
+        } else {
             document.getElementById("viewId").value = "Customer Not Found";
         }
-        
+
     }
 }
 
@@ -190,5 +193,5 @@ function getHistory() {
 
 function clearCustomerData() {
     localStorage.removeItem('customers');
-    console.log('Customer data cleared'); 
+    console.log('Customer data cleared');
 }

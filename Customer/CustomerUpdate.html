@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Customer</title>
-    
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <center><img src="img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
-            </div>
-            <div class="col-4">
-                <center><img src="img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
-            </div>
-            <div class="col-4">
-                <center><img src="img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
-            </div>
+                <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+              </div>
+              
+              <div class="col-4">
+                <center><img src="../img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
+                
+              </div>
+              
+              <div class="col-4">
+                <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+              </div>
         </div>
     </div>
 
@@ -38,28 +43,28 @@
             <div class="container">
                 <div class="d-flex justify-content">
                     <div class="w-25 p-1">
-                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="searchCustomer()">Search</a>
+                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="search-button">Search</a>
                     </div>
                     <div class="w-100 p">
-                        <input class="form-control mt-4" type="text" placeholder="" id="value">
+                        <input id="search-input" class="form-control mt-4" type="text" placeholder="">
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-4">
-                    <img src="img/chef.png" class="img-fluid h-75" alt="chef">
+                    <img src="../img/chef.png" class="img-fluid h-100" alt="chef">
                 </div>
 
                 <div class="col-3 mt-5">
-                    <p id="subtitle">Customer Id</p>  
-                    <p id="subtitle">Customer Name</p>  
-                    <p id="subtitle">Customer Tel</p>  
-                    <p id="subtitle">Customer Email</p>  
+                    <p id="subtitle">Customer Id</p>
+                    <p id="subtitle">Customer Name</p>
+                    <p id="subtitle">Customer Tel</p>
+                    <p id="subtitle">Customer Email</p>
                 </div>
 
                 <div class="col-4 mt-5">
-                    <input class="form-control mt-1" type="text" placeholder="" readonly id="viewId">  
+                    <input class="form-control mt-1" type="text" placeholder="" readonly id="viewId">
                     <input class="form-control mt-4" type="text" placeholder="" id="viewName">
                     <input class="form-control mt-4" type="text" placeholder="" id="viewPhoneNum">
                     <input class="form-control mt-4" type="text" placeholder="" id="viewEmail">
@@ -67,10 +72,12 @@
                     <div class="container">
                         <div class="d-flex justify-content-end">
                             <div class="w-25 p-1">
-                                <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="updateCustomer()">Update</a>
+                                <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS"
+                                    onclick="updateCustomer()">Update</a>
                             </div>
                             <div class="w-25 p-1">
-                                <a href="CustomerMain.html" class="btn w-75" tabindex="-1" role="button" id="subBtnS">Back</a>
+                                <a href="CustomerMain.html" class="btn w-75" tabindex="-1" role="button"
+                                    id="subBtnS">Back</a>
                             </div>
                         </div>
                     </div>
@@ -83,4 +90,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
