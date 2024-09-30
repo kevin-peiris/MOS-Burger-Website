@@ -21,7 +21,7 @@ let itemCount = 0;
 function addItem() {
     const itemId = document.getElementById("itemId").value;
     const name = document.getElementById("name").value;
-    const date = new Date(document.getElementById("date").value);
+    const date = document.getElementById("date").value;
     const qty = parseInt(document.getElementById("qty").value, 10);
     const suplier = document.getElementById("suplier").value;
 
@@ -34,7 +34,7 @@ function addItem() {
     } else if (qty <= 0) {
         document.getElementById("qty").value = "";
         alert("Invalid Quantity");
-    } else if (date < currentDate) {
+    } else if (new Date(date) < currentDate) {
         document.getElementById("date").value = "";
         alert("Invalid date!");
     } else {
@@ -157,7 +157,7 @@ function deleteItem() {
 function updateItem() {
     if (foundElement !== -1) {
         const name = document.getElementById("viewName").value;
-        const date = new Date(document.getElementById("viewDate").value);
+        const date = document.getElementById("viewDate").value;
         const qty = parseInt(document.getElementById("viewQty").value, 10);
         const suplier = document.getElementById("viewSuplier").value;
 
@@ -170,7 +170,7 @@ function updateItem() {
         } else if (qty <= 0) {
             document.getElementById("qty").value = "";
             alert("Invalid Quantity");
-        } else if (date < currentDate) {
+        } else if (new Date(date) < currentDate) {
             document.getElementById("date").value = "";
             alert("Invalid date!");
         } else {
@@ -200,15 +200,16 @@ function loadTable() {
     let table = document.getElementById("tbl");
 
     let body = `<thead style="position: sticky; top: 0; z-index: 1;">
-                    <tr>
-                        <th scope="col">Item-ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Expire Date</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Suplier</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">`;
+                <tr style="background-color: #FFBD59;">
+                    <th scope="col">Item-ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Expire Date</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Suplier</th>
+                    <th scope="col-3"></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">`;
 
     items.forEach(item => {
         body += `
@@ -218,10 +219,70 @@ function loadTable() {
             <td>${item.date}</td>
             <td>${item.qty}</td>
             <td>${item.suplier}</td>
-        </tr>`
+            <td><button type="button" class="btn btn-danger w-100" onclick="deleteFromTbl('${item.itemId}')" id="subBtnS">Delete</button></td>
+        </tr>`;
     });
     table.innerHTML = body;
+
 }
+
+function loadExpTable() {
+
+    let expItemList = items.slice(); 
+
+    const currentDate = new Date();
+
+    expItemList.sort(function(a, b) {
+        return new Date(a.date) - new Date(b.date);
+    });
+
+    let table = document.getElementById("ExpTbl");
+
+    let body = `<thead style="position: sticky; top: 0; z-index: 1;">
+                <tr style="background-color: #FFBD59;">
+                    <th scope="col">Item-ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Expire Date</th>
+                    <th scope="col">State</th>
+                    <th scope="col-3"></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">`;
+
+    expItemList.forEach(item => {
+        let msg="Not Expired";
+        if (new Date(item.date) < currentDate) {
+            msg="Expired";
+        }
+
+        body += `
+        <tr>
+            <th scope="row">${item.itemId}</th>
+            <td>${item.name}</td>
+            <td>${item.date}</td>
+            <td>${item.qty}</td>
+            <td>${msg}</td>
+            <td><button type="button" class="btn btn-danger w-100" onclick="deleteFromTbl('${item.itemId}')" id="subBtnS">Delete</button></td>
+        </tr>`;
+        
+    });
+    table.innerHTML = body;
+
+}
+
+function deleteFromTbl(itemId) {
+    if (itemId) {
+        const confirmation = confirm('Are you sure you want to delete this item?');
+        if (confirmation) {
+            const index = items.findIndex(item => item.itemId === itemId);
+            items.splice(index, 1);
+            localStorage.setItem('items', JSON.stringify(items));
+            window.location.reload();
+        } 
+    }
+}
+
+
 
 
 
