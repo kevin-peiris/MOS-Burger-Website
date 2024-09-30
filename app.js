@@ -70,39 +70,43 @@ document.addEventListener("DOMContentLoaded", loadCustomers);
 
 let foundElement=-1;
 
-function searchCustomer(data){
-    const value=data;
-    
+function searchCustomer(data) {
+    const value = data;
+    let found = false;
+
     document.getElementById("viewId").value = "";
     document.getElementById("viewName").value = "";
     document.getElementById("viewPhoneNum").value = "";
     document.getElementById("viewEmail").value = "";
 
     for (let index = 0; index < customers.length; index++) {
-        let customer=customers[index];
-        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
+        let customer = customers[index];
+        if (customer.name == value || customer.customerId == value ) {
             document.getElementById("viewId").value = customer.customerId;
             document.getElementById("viewName").value = customer.name;
             document.getElementById("viewPhoneNum").value = customer.phoneNum;
             document.getElementById("viewEmail").value = customer.email;
 
-            document.getElementById('search-input').value="";
+            document.getElementById('search-input').value = "";
 
             console.log("Found");
-            foundElement=index;
+            foundElement = index;
             console.log(foundElement);
-            alert('Customer Found!');
-        }else{
-            document.getElementById("viewId").value = "";
-            document.getElementById("viewName").value = "";
-            document.getElementById("viewPhoneNum").value = "";
-            document.getElementById("viewEmail").value = "";
-
-            document.getElementById('search-input').value="";
-
-            alert('Customer Not Found!');
+            found=true;
         }
-        
+    }
+
+    if (found) {
+        alert('Customer Found!');
+    } else {
+        alert('Customer Not Found!');
+
+        document.getElementById("viewId").value = "";
+        document.getElementById("viewName").value = "";
+        document.getElementById("viewPhoneNum").value = "";
+        document.getElementById("viewEmail").value = "";
+
+        document.getElementById('search-input').value = "";
     }
 }
 
@@ -190,5 +194,7 @@ function getHistory() {
 
 function clearCustomerData() {
     localStorage.removeItem('customers');
-    console.log('Customer data cleared'); 
+    localStorage.removeItem('items');
+
+    console.log('data cleared'); 
 }

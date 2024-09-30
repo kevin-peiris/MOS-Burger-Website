@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Item</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadTable()">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-4">
+                <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+            </div>
+
+            <div class="col-4">
+                <center><img src="../img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
+
+            </div>
+
+            <div class="col-4">
+                <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="container w-auto ">
+        <center>
+            <p id="titleText">View Items</p>
+        </center>
+    </div>
+
+    <hr>
+
+    <div class="row-cols-1 pt-5" id="partition">
+        <div class="container">
+            <div class="col">
+                <div style="max-height: 500px; overflow-y: scroll;">
+                    <table class="table w-75 mx-auto" id="tbl">
+                        <thead style="position: sticky; top: 0; z-index: 1;">
+                            <tr>
+                                <th scope="col">Item-ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Expire Date</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Suplier</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="d-flex justify-content-end">
+                    <div class="w-25 p-1">
+                        <a href="StoreMain.html" class="btn w-50" tabindex="-1" role="button" id="subBtnS">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

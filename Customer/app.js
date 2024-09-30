@@ -1,20 +1,20 @@
-class Customer{
+class Customer {
     customerId;
     name;
     phoneNum;
     email;
 
-    constructor(customerId,name,phoneNum,email){
-        this.customerId=customerId;
-        this.name=name;
-        this.phoneNum=phoneNum;
-        this.email=email;
+    constructor(customerId, name, phoneNum, email) {
+        this.customerId = customerId;
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.email = email;
     }
 
 }
 
-let customers=[];
-let custCount=0;
+let customers = [];
+let custCount = 0;
 
 function addCustomer() {
     const customerId = document.getElementById("customerId").value;
@@ -22,14 +22,14 @@ function addCustomer() {
     const phoneNum = document.getElementById("phoneNum").value;
     const email = document.getElementById("email").value;
 
-    if (name.length==0 || phoneNum.length==0 || email.length==0) {
+    if (name.length == 0 || phoneNum.length == 0 || email.length == 0) {
         alert("TextField empty!!!");
-    }else if (phoneNum.length!=10) {
+    } else if (phoneNum.length != 10) {
 
         document.getElementById("phoneNum").value = "";
         alert("Inavlid Phone Number");
 
-    }else{
+    } else {
 
         const customer = new Customer(customerId, name, phoneNum, email);
         customers.push(customer);
@@ -39,13 +39,13 @@ function addCustomer() {
 
         console.log(customers);
 
-        
+
         document.getElementById("name").value = "";
         document.getElementById("phoneNum").value = "";
         document.getElementById("email").value = "";
 
         alert("Customer added successfully");
-        
+
         generateId();
 
     }
@@ -68,41 +68,45 @@ function loadCustomers() {
 
 document.addEventListener("DOMContentLoaded", loadCustomers);
 
-let foundElement=-1;
+let foundElement = -1;
 
-function searchCustomer(data){
-    const value=data;
-    
+function searchCustomer(data) {
+    const value = data;
+    let found = false;
+
     document.getElementById("viewId").value = "";
     document.getElementById("viewName").value = "";
     document.getElementById("viewPhoneNum").value = "";
     document.getElementById("viewEmail").value = "";
 
     for (let index = 0; index < customers.length; index++) {
-        let customer=customers[index];
-        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
+        let customer = customers[index];
+        if (customer.name == value || customer.customerId == value ) {
             document.getElementById("viewId").value = customer.customerId;
             document.getElementById("viewName").value = customer.name;
             document.getElementById("viewPhoneNum").value = customer.phoneNum;
             document.getElementById("viewEmail").value = customer.email;
 
-            document.getElementById('search-input').value="";
+            document.getElementById('search-input').value = "";
 
             console.log("Found");
-            foundElement=index;
+            foundElement = index;
             console.log(foundElement);
-            alert('Customer Found!');
-        }else{
-            document.getElementById("viewId").value = "";
-            document.getElementById("viewName").value = "";
-            document.getElementById("viewPhoneNum").value = "";
-            document.getElementById("viewEmail").value = "";
-
-            document.getElementById('search-input').value="";
-
-            alert('Customer Not Found!');
+            found=true;
         }
-        
+    }
+
+    if (found) {
+        alert('Customer Found!');
+    } else {
+        alert('Customer Not Found!');
+
+        document.getElementById("viewId").value = "";
+        document.getElementById("viewName").value = "";
+        document.getElementById("viewPhoneNum").value = "";
+        document.getElementById("viewEmail").value = "";
+
+        document.getElementById('search-input').value = "";
     }
 }
 
@@ -122,11 +126,11 @@ document.getElementById('search-input').addEventListener('keypress', function (e
     }
 });
 
-function deleteCustomer() { 
+function deleteCustomer() {
     if (foundElement !== -1) {
         customers.splice(foundElement, 1);
         localStorage.setItem('customers', JSON.stringify(customers));
-        
+
         foundElement = -1;
         document.getElementById("viewId").value = "";
         document.getElementById("viewName").value = "";
@@ -136,10 +140,10 @@ function deleteCustomer() {
     } else {
         alert("No customer selected to delete.");
     }
-    
+
 }
 
-function updateCustomer() { 
+function updateCustomer() {
     if (foundElement !== -1) {
         const name = document.getElementById("viewName").value;
         const phoneNum = document.getElementById("viewPhoneNum").value;
@@ -162,33 +166,20 @@ function updateCustomer() {
 }
 
 function getHistory() {
-    const value=document.getElementById("value").value;
+    const value = document.getElementById("value").value;
 
     document.getElementById("viewId").value = "";
 
     for (let index = 0; index < customers.length; index++) {
-        let customer=customers[index];
-        if (customer.name===value | customer.customerId==value | customer.phoneNum==value | customer.email==value) {
+        let customer = customers[index];
+        if (customer.name === value | customer.customerId == value | customer.phoneNum == value | customer.email == value) {
             document.getElementById("viewId").value = customer.customerId;
-            
+
             console.log("Found");
             console.log(foundElement);
-        }else{
+        } else {
             document.getElementById("viewId").value = "Customer Not Found";
         }
-        
+
     }
-}
-
-
-
-
-
-
-
-
-
-function clearCustomerData() {
-    localStorage.removeItem('customers');
-    console.log('Customer data cleared'); 
 }

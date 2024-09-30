@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer History</title>
-    
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        
+
         <div class="row">
-          
+
             <div class="col-4">
                 <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
-              </div>
-              
-              <div class="col-4">
+            </div>
+
+            <div class="col-4">
                 <center><img src="../img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
-                
-              </div>
-              
-              <div class="col-4">
+
+            </div>
+
+            <div class="col-4">
                 <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
-              </div>
+            </div>
         </div>
     </div>
 
@@ -45,18 +47,19 @@
             <div class="container">
                 <div class="d-flex justify-content">
                     <div class="w-25 p-1">
-                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="getHistory()">Search</a>
+                        <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS"
+                            onclick="getHistory()">Search</a>
                     </div>
                     <div class="w-100 p">
                         <input class="form-control mt-4" type="text" placeholder="" id="value">
                     </div>
                 </div>
             </div>
-            
+
             <div class="container mt-5">
                 <div class="d-flex justify-content">
                     <div class="w-25 p-1">
-                        <p id="subtitle">Customer Id</p>  
+                        <p id="subtitle">Customer Id</p>
                     </div>
                     <div class="w-25 p-1">
                         <input class="form-control mt-1" type="text" placeholder="" readonly id="viewId">
@@ -66,36 +69,36 @@
 
             <div class="row-cols-1">
                 <div class="col-12">
-                    
+
                     <table class="table table-bordered">
                         <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+
                         </tbody>
                     </table>
-                    
+
                 </div>
-              
-              
+
+
 
             </div>
             <div class="container">
@@ -108,8 +111,9 @@
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

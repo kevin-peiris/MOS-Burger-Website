@@ -21,16 +21,22 @@ let itemCount = 0;
 function addItem() {
     const itemId = document.getElementById("itemId").value;
     const name = document.getElementById("name").value;
-    const date = document.getElementById("date").value;
+    const date = new Date(document.getElementById("date").value);
     const qty = parseInt(document.getElementById("qty").value, 10);
     const suplier = document.getElementById("suplier").value;
 
-   
+    const currentDate = new Date();
+
+    currentDate.setHours(0, 0, 0, 0);
+
     if (!name || !date || isNaN(qty) || !suplier) {
         alert("Some fields are empty or invalid!");
     } else if (qty <= 0) {
         document.getElementById("qty").value = "";
         alert("Invalid Quantity");
+    } else if (date < currentDate) {
+        document.getElementById("date").value = "";
+        alert("Invalid date!");
     } else {
         const item = new Item(itemId, name, date, qty, suplier);
         items.push(item);
@@ -40,7 +46,6 @@ function addItem() {
 
         console.log(items);
 
-       
         document.getElementById("name").value = "";
         document.getElementById("date").value = "";
         document.getElementById("qty").value = "";
@@ -48,7 +53,6 @@ function addItem() {
 
         alert("Item added successfully");
 
-        
         generateId();
     }
 }
@@ -73,48 +77,55 @@ document.addEventListener("DOMContentLoaded", loadItems);
 
 let foundElement = -1;
 
-function searchCustomer(data) {
+function searchItem(data) {
     const value = data;
+    let found = false;
 
-    document.getElementById("viewId").value = "";
+    document.getElementById("viewItemId").value = "";
     document.getElementById("viewName").value = "";
-    document.getElementById("viewPhoneNum").value = "";
-    document.getElementById("viewEmail").value = "";
+    document.getElementById("viewDate").value = "";
+    document.getElementById("viewQty").value = "";
+    document.getElementById("viewSuplier").value = "";
 
-    for (let index = 0; index < customers.length; index++) {
-        let customer = customers[index];
-        if (customer.name === value | customer.customerId == value | customer.phoneNum == value | customer.email == value) {
-            document.getElementById("viewId").value = customer.customerId;
-            document.getElementById("viewName").value = customer.name;
-            document.getElementById("viewPhoneNum").value = customer.phoneNum;
-            document.getElementById("viewEmail").value = customer.email;
+    for (let index = 0; index < items.length; index++) {
+        let item = items[index];
+        if (item.name === value || item.itemId == value) {
+            document.getElementById("viewItemId").value = item.itemId;
+            document.getElementById("viewName").value = item.name;
+            document.getElementById("viewDate").value = item.date;
+            document.getElementById("viewQty").value = item.qty;
+            document.getElementById("viewSuplier").value = item.suplier;
 
             document.getElementById('search-input').value = "";
 
             console.log("Found");
             foundElement = index;
             console.log(foundElement);
-            alert('Customer Found!');
-        } else {
-            document.getElementById("viewId").value = "";
-            document.getElementById("viewName").value = "";
-            document.getElementById("viewPhoneNum").value = "";
-            document.getElementById("viewEmail").value = "";
-
-            document.getElementById('search-input').value = "";
-
-            alert('Customer Not Found!');
+            found = true;
         }
+    }
 
+    if (found) {
+        alert('Item Found!');
+    } else {
+        document.getElementById("viewItemId").value = "";
+        document.getElementById("viewName").value = "";
+        document.getElementById("viewDate").value = "";
+        document.getElementById("viewQty").value = "";
+        document.getElementById("viewSuplier").value = "";
+
+        document.getElementById('search-input').value = "";
+
+        alert('Item Not Found!');
     }
 }
 
 document.getElementById('search-button').addEventListener('click', function () {
     const data = document.getElementById('search-input').value;
     if (data) {
-        searchCustomer(data);
+        searchItem(data);
     } else {
-        alert('Please search for a Customer!');
+        alert('Please search for a Item!');
     }
 });
 
@@ -125,73 +136,98 @@ document.getElementById('search-input').addEventListener('keypress', function (e
     }
 });
 
-function deleteCustomer() {
+function deleteItem() {
     if (foundElement !== -1) {
-        customers.splice(foundElement, 1);
-        localStorage.setItem('customers', JSON.stringify(customers));
+        items.splice(foundElement, 1);
+        localStorage.setItem('items', JSON.stringify(items));
 
         foundElement = -1;
-        document.getElementById("viewId").value = "";
+        document.getElementById("viewItemId").value = "";
         document.getElementById("viewName").value = "";
-        document.getElementById("viewPhoneNum").value = "";
-        document.getElementById("viewEmail").value = "";
-        alert("Customer deleted successfully.");
+        document.getElementById("viewDate").value = "";
+        document.getElementById("viewQty").value = "";
+        document.getElementById("viewSuplier").value = "";
+        alert("Item deleted successfully.");
     } else {
-        alert("No customer selected to delete.");
+        alert("No Item selected to delete.");
     }
-
 }
 
-function updateCustomer() {
+
+function updateItem() {
     if (foundElement !== -1) {
         const name = document.getElementById("viewName").value;
-        const phoneNum = document.getElementById("viewPhoneNum").value;
-        const email = document.getElementById("viewEmail").value;
+        const date = new Date(document.getElementById("viewDate").value);
+        const qty = parseInt(document.getElementById("viewQty").value, 10);
+        const suplier = document.getElementById("viewSuplier").value;
 
-        customers[foundElement].name = name;
-        customers[foundElement].phoneNum = phoneNum;
-        customers[foundElement].email = email;
+        const currentDate = new Date();
 
-        localStorage.setItem('customers', JSON.stringify(customers));
-        alert("Customer updated successfully.");
-        document.getElementById("viewId").value = "";
-        document.getElementById("viewName").value = "";
-        document.getElementById("viewPhoneNum").value = "";
-        document.getElementById("viewEmail").value = "";
-        foundElement = -1;
-    } else {
-        alert("No customer selected to update.");
-    }
-}
+        currentDate.setHours(0, 0, 0, 0);
 
-function getHistory() {
-    const value = document.getElementById("value").value;
-
-    document.getElementById("viewId").value = "";
-
-    for (let index = 0; index < customers.length; index++) {
-        let customer = customers[index];
-        if (customer.name === value | customer.customerId == value | customer.phoneNum == value | customer.email == value) {
-            document.getElementById("viewId").value = customer.customerId;
-
-            console.log("Found");
-            console.log(foundElement);
+        if (!name || !date || isNaN(qty) || !suplier) {
+            alert("Some fields are empty or invalid!");
+        } else if (qty <= 0) {
+            document.getElementById("qty").value = "";
+            alert("Invalid Quantity");
+        } else if (date < currentDate) {
+            document.getElementById("date").value = "";
+            alert("Invalid date!");
         } else {
-            document.getElementById("viewId").value = "Customer Not Found";
-        }
 
+            items[foundElement].name = name;
+            items[foundElement].date = date;
+            items[foundElement].qty = qty;
+            items[foundElement].suplier = suplier;
+
+            localStorage.setItem('items', JSON.stringify(items));
+            alert("Item updated successfully.");
+            document.getElementById("viewItemId").value = "";
+            document.getElementById("viewName").value = "";
+            document.getElementById("viewDate").value = "";
+            document.getElementById("viewQty").value = "";
+            document.getElementById("viewSuplier").value = "";
+            foundElement = -1;
+
+        }
+    } else {
+        alert("No item selected to update.");
     }
 }
 
+function loadTable() {
 
+    let table = document.getElementById("tbl");
 
+    let body = `<thead style="position: sticky; top: 0; z-index: 1;">
+                    <tr>
+                        <th scope="col">Item-ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Expire Date</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Suplier</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">`;
 
-
-
-
-
-
-function clearCustomerData() {
-    localStorage.removeItem('customers');
-    console.log('Customer data cleared');
+    items.forEach(item => {
+        body += `
+        <tr>
+            <th scope="row">${item.itemId}</th>
+            <td>${item.name}</td>
+            <td>${item.date}</td>
+            <td>${item.qty}</td>
+            <td>${item.suplier}</td>
+        </tr>`
+    });
+    table.innerHTML = body;
 }
+
+
+
+
+
+
+
+
+
