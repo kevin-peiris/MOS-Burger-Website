@@ -50,7 +50,7 @@
             <a href="#" class="btn w-75" tabindex="-1" role="button" id="search-button">Search</a>
           </div>
           <div class="w-100 p">
-            <input id="search-input " class="form-control mt-4" type="text" placeholder="">
+            <input id="search-input" class="form-control mt-4" type="text" placeholder="">
           </div>
         </div>
       </div>
@@ -67,8 +67,10 @@
           <p id="subtitle">Item Id</p>
           <p id="subtitle">Item Name</p>
           <p id="subtitle">Expire Date</p>
+          <p id="subtitle">Category</p>
           <p id="subtitle">Quantity</p>
-          <p id="subtitle">Suplier</p>
+          <p id="subtitle">Price</p>
+          <p id="subtitle">Discount</p>
 
         </div>
 
@@ -77,10 +79,32 @@
           <input class="form-control mt-1" type="text" placeholder="" id="viewItemId" readonly>
           <input class="form-control mt-4" type="text" placeholder="" id="viewName">
           <input class="form-control mt-4" type="date" placeholder="" id="viewDate">
+          <div class="btn-group btn-group-toggle mt-4" data-toggle="buttons">
+            <label class="btn btn-light">
+              <input type="radio" name="options" id="option1" autocomplete="off" value="Burgers"> Burgers
+            </label>
+            <label class="btn btn-light">
+              <input type="radio" name="options" id="option2" autocomplete="off" value="Submarines"> Submarines
+            </label>
+            <label class="btn btn-light">
+              <input type="radio" name="options" id="option3" autocomplete="off" value="Fries"> Fries
+            </label>
+            <label class="btn btn-light">
+              <input type="radio" name="options" id="option4" autocomplete="off" value="Pasta"> Pasta
+            </label>
+            <label class="btn btn-light">
+              <input type="radio" name="options" id="option5" autocomplete="off" value="Chicken"> Chicken
+            </label>
+            <label class="btn btn-light">
+              <input type="radio" name="options" id="option6" autocomplete="off" value="Beverages"> Beverages
+            </label>
+          </div>
           <input class="form-control mt-4" type="number" placeholder="" id="viewQty">
-          <input class="form-control mt-4" type="text" placeholder="" id="viewSuplier">
+          <input class="form-control mt-4" type="number" placeholder="" id="viewPrice">
+          <input class="form-control mt-4" type="number" placeholder="" id="viewDiscount" value="0">
 
-          <div class="container">
+
+          <div class="container mt-3">
             <div class="d-flex justify-content-end">
               <div class="w-25 p-1">
                 <a href="#" class="btn w-75" tabindex="-1" role="button" id="subBtnS" onclick="updateItem()">Update</a>
@@ -104,7 +128,7 @@
 
 
 
-  
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="app.js"></script>
 </body>

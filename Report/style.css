@@ -40,7 +40,9 @@ hr{
     background-color: #FF3132;
     font-weight: bolder;
     color: #FFBD59;
+    margin-top: 20px;
     font-size: 1vw;
+    
 }
 
 #titleText{
@@ -52,7 +54,7 @@ hr{
 #partition{
     background-color: #FFBD59;
     width: 100%;
-    height: 600px;
+    height: 500px;
     margin-top: -16px;
 }
 
