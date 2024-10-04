@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-4">
+                <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+            </div>
+
+            <div class="col-4">
+                <center><img src="../img/MOS Burger LOGO4.png" class="img-fluid" alt="logo"></center>
+
+            </div>
+
+            <div class="col-4">
+                <center><img src="../img/burger(1).png" class="img-fluid h-25 " alt="burger"></center>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+    <div class="row-cols-1" id="partition" style="height: 1000px;">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-5 d-flex align-items-center mt-4">
+                        <p id="subtitle" class="mb-0 mr-2">Order Id:</p>
+                        <input class="form-control w-25" type="text" placeholder="" id="orderId" readonly>
+                    </div>
+
+                    <div class="col d-flex align-items-center mt-4">
+                        <p id="dateDisplay" class="mb-0 mr-2 fw-bold"
+                            style="white-space: nowrap; font-size: 1.5vw; color: #FF3132; margin-right: 10px;"></p>
+                        <p id="timeDisplay" class="mb-0 fw-bold"
+                            style="white-space: nowrap; font-size: 1.5vw; color: #FF3132;"></p>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col d-flex align-items-center">
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="burgerDropdown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1vw; margin-left: 5px;">
+                                Burgers
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="burgerDropdown" id="Burgers">
+
+                            </ul>
+                        </div>
+
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="submarinesDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1vw; margin-left: 5px;">
+                                Submarines
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="submarinesDropdown" id="Submarines">
+
+                            </ul>
+                        </div>
+
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="friesDropdown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1vw; margin-left: 5px;">
+                                Fries
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="friesDropdown" id="Fries">
+
+                            </ul>
+                        </div>
+
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="pastaDropdown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1vw; margin-left: 5px;">
+                                Pasta
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="pastaDropdown" id="Pasta">
+
+                            </ul>
+                        </div>
+
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="chickenDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1vw; margin-left: 5px;">
+                                Chicken
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="chickenDropdown" id="Chicken">
+
+                            </ul>
+                        </div>
+
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="beveragesDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1vw; margin-left: 5px;">
+                                Beverages
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="beveragesDropdown" id="Beverages">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-6 mt-5">
+                        <div class="mb-3">
+                            <label for="viewItemId" class="form-label" style="color: #FF3132;">Item Id</label>
+                            <input class="form-control form-control-sm" type="text" placeholder="" id="viewItemId"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="viewName" class="form-label" style="color: #FF3132;">Item Name</label>
+                            <input class="form-control form-control-sm" type="text" placeholder="" id="viewItemName"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="viewDate" class="form-label" style="color: #FF3132;">Expire Date</label>
+                            <input class="form-control form-control-sm" type="date" placeholder="" id="viewDate"
+                                readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-6 mt-5">
+                        <div class="mb-3">
+                            <label for="viewQty" class="form-label" style="color: #FF3132;">Quantity</label>
+                            <input class="form-control form-control-sm" type="number" placeholder="" id="viewQty"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="viewPrice" class="form-label" style="color: #FF3132;">Price</label>
+                            <input class="form-control form-control-sm" type="text" placeholder="" id="viewPrice"
+                                readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="viewDiscount" class="form-label" style="color: #FF3132;">Discount</label>
+                            <input class="form-control form-control-sm" type="text" placeholder="" id="viewDiscount"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1 mt-3 p-1" style="margin-left: 20px;">
+                        <p id="subtitle">QTY</p>
+                    </div>
+
+                    <div class="col-5 d-flex align-content-center">
+                        <input class="form-control mt-4 w-50" type="number" placeholder="" id="inp-QTY">
+                        <div class="w-100 p-1">
+                            <a href="#" class="btn w-100" tabindex="-1" role="button" id="cart-button">Add to cart</a>
+                        </div>
+                    </div>
+
+                    <div class="col w-100 d-flex align-content-center">
+                        <div class="w-100 p-1">
+                            <a href="#" class="btn w-100" tabindex="-1" role="button" id="placeOrder-button" onclick="placeOrder()">Place Order</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-6">
+                <div class="row align-items-baseline">
+                    <div class="col-4 d-flex justify-content-start">
+                        <div class="dropdown me-2 mt-4">
+                            <button class="btn dropdown-toggle" type="button" id="customerDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                style="background-color: #FF3132; color: #FFBD59; font-weight: 600; font-size: 1.5vw;">
+                                Customer list
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="customerDropdown" id="customerList">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex">
+                        <div class="row w-100">
+                            <div class="container">
+                                <div class="d-flex align-content-center">
+                                    <div class="w-25 p-1">
+                                        <a href="#" class="btn w-100" tabindex="-1" role="button"
+                                            id="search-button">Search</a>
+                                    </div>
+                                    <div class="w-100">
+                                        <input id="search-input" class="form-control mt-4" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col mt-3">
+                                <p id="subtitle">Customer Id</p>
+                                <p id="subtitle">Name</p>
+                                <p id="subtitle">Customer Tel</p>
+                            </div>
+
+                            <div class="col mt-3">
+                                <input class="form-control mt-1" type="text" placeholder="" id="viewCustomerId"
+                                    readonly>
+                                <input class="form-control mt-4" type="text" placeholder="" id="viewName" readonly>
+                                <input class="form-control mt-4" type="text" placeholder="" id="viewPhoneNum" readonly>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col d-flex align-items-center mt-4">
+                        <p id="itemCount" class="mb-0 fw-bold"
+                            style="white-space: nowrap; color: #FF3132; padding-right: 50px;">Item Count: 0</p>
+                        <p id="subTotal" class="mb-0 fw-bold"
+                            style="white-space: nowrap; color: #FF3132;">Sub Total: 0/-</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+                    
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col w-100">
+                <div style="max-height: 500px; overflow-y: scroll;">
+                    <table class="table w-75 mx-auto" id="tbl">
+                        <thead style="position: sticky; top: 0; z-index: 1;">
+                            <tr style="background-color: #FFBD59;">
+                                <th scope="col">Item-ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Total</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container mt-5">
+                <div class="d-flex justify-content-end">
+                    <div class="w-25 p-1">
+                        <a href="#" class="btn w-50" tabindex="-1" role="button" id="subBtnS" onclick="returnItems()">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

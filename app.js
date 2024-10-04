@@ -192,7 +192,7 @@ function getHistory() {
 
 
 
-function clearCustomerData() {
+function clearData() {
     localStorage.removeItem('customers');
     localStorage.removeItem('items');
 
